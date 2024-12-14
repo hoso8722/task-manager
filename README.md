@@ -1,17 +1,21 @@
 # Getting started
 
-## Choosing Your Sail Services
+## Install Server side development by Laravel sail
+
+### Choosing Your Sail Services
 
 ```bash
 curl -s "https://laravel.build/example-app?with=mysql,redis" | bash
 ```
 
-## Install sail on macOS or Linux
+### Install sail on macOS or Linux
 
 ```bash
 cd example-app
-./vendor/bin/sail up
+# docker-compose up -d
+./vendor/bin/sail up -d
 
+# migrate DB
 ./vendor/bin/sail artisan migrate
 ```
 
@@ -23,7 +27,7 @@ alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
 To make sure this is always available, you may add this to your shell configuration file in your home directory, such as ~/.zshrc or ~/.bashrc, and then restart your shell.
 
-## Change Configuration
+### Change Configuration
 
 ```bash
 sail artisan sail:publish
@@ -54,7 +58,7 @@ date
 exit
 ```
 
-## Configure String code in Mysql
+### Configure String code in Mysql
 
 Create `my.cnf` in `./docker/8.x/` directory
 
@@ -119,3 +123,28 @@ check utf8mb4 values in stdout
 +--------------------------+--------------------------------+
 8 rows in set (0.01 sec)
 ```
+
+## Install front end development
+
+#### Install laravel breeze
+
+```bash
+sail composer require laravel/breeze --dev
+```
+
+#### Install React
+
+Dependencies will be added for a set of packages (react, inertia, etc.) necessary to develop the front end in React.
+
+```bash
+sail artisan breeze:install react
+```
+#### Install packege.json and launch local server
+
+```bash
+npm install
+
+npm run dev
+```
+
+
